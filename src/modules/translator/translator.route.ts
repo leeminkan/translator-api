@@ -6,6 +6,11 @@ async function translatorRouter(fastify: FastifyInstance) {
   fastify.route({
     method: "GET",
     url: "/",
+    schema: {
+      querystring: {
+        word: { type: "string" },
+      },
+    },
     handler: controllers.get,
   });
 }
