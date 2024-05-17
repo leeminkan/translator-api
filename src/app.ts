@@ -4,6 +4,7 @@ import {
   FastifyRequest,
   FastifyServerOptions,
 } from "fastify";
+import cors from "@fastify/cors";
 import translatorRouter from "./modules/translator/translator.route";
 
 async function app(
@@ -11,6 +12,10 @@ async function app(
   opts: FastifyServerOptions,
   done: any
 ) {
+  instance.register(cors, {
+    origin: "*",
+  });
+
   instance.get(
     "/health-check",
     async (req: FastifyRequest, reply: FastifyReply) => {
